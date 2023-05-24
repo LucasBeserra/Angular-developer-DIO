@@ -5,15 +5,22 @@ class TituloDinamico extends HTMLElement {
         const shadow = this.attachShadow({mode: "open"});
 
         //base do component
-        const componentRoot = document.createElement("h1");
-        componentRoot.textContent = 'Felipe'
+        const titulo = document.createElement("h1");
+        titulo.textContent = this.getAttribute("titulo");
 
 
         //estilizar o component
         const style = document.createElement("style");
+        style.textContent = `
+            h1 {
+                color: red;
+            }
+        `
 
-        //enivar para a shadow
+        //enviar para a shadow
+        shadow.appendChild(titulo);
+        shadow.appendChild(style);
     }
 }
 
-customElements.define("titulo-dinamico", TituloDinamico)
+customElements.define('titulo-dinamico', TituloDinamico);
